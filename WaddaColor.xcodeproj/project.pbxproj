@@ -12,6 +12,7 @@
 		04E381C61C7CF76B0050A0DB /* WaddaColorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E381C51C7CF76B0050A0DB /* WaddaColorTests.swift */; };
 		04E381D11C7CF7910050A0DB /* WaddaColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E381D01C7CF7910050A0DB /* WaddaColor.swift */; };
 		04E381D31C7CF7F10050A0DB /* ColorNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E381D21C7CF7F10050A0DB /* ColorNames.swift */; };
+		04E381D51C7D135F0050A0DB /* Colorspaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E381D41C7D135F0050A0DB /* Colorspaces.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,6 +34,7 @@
 		04E381C71C7CF76B0050A0DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		04E381D01C7CF7910050A0DB /* WaddaColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaddaColor.swift; sourceTree = "<group>"; };
 		04E381D21C7CF7F10050A0DB /* ColorNames.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorNames.swift; sourceTree = "<group>"; };
+		04E381D41C7D135F0050A0DB /* Colorspaces.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colorspaces.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +80,7 @@
 				04E381B91C7CF76B0050A0DB /* WaddaColor.h */,
 				04E381BB1C7CF76B0050A0DB /* Info.plist */,
 				04E381D01C7CF7910050A0DB /* WaddaColor.swift */,
+				04E381D41C7D135F0050A0DB /* Colorspaces.swift */,
 				04E381D21C7CF7F10050A0DB /* ColorNames.swift */,
 			);
 			path = WaddaColor;
@@ -202,6 +205,7 @@
 			files = (
 				04E381D31C7CF7F10050A0DB /* ColorNames.swift in Sources */,
 				04E381D11C7CF7910050A0DB /* WaddaColor.swift in Sources */,
+				04E381D51C7D135F0050A0DB /* Colorspaces.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

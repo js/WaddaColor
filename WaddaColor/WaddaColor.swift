@@ -1,33 +1,25 @@
+//
+//  WaddaColor.swift
+//  WaddaColor
+//
+//  Created by Johan Sørensen on 23/02/16.
+//  Copyright © 2016 Johan Sørensen. All rights reserved.
+//
+
 import UIKit
 
 public extension UIColor {
     var name: String {
         let wadda = WaddaColor(color: self)
-        return wadda.nameOfClosestMatch()
+        let match = wadda.closestMatch()
+        return match.name
     }
 }
 
-struct RGBA: Equatable {
-    let r: Int // 0-255
-    let g: Int
-    let b: Int
-    let a: Float // 0.0-1.0
-
-    init(_ r: Int, _ g: Int, _ b: Int, _ a: Float) {
-        // TODO: precondition clamps
-        self.r = r
-        self.g = g
-        self.b = b
-        self.a = a
-    }
-
-    var color: UIColor {
-        return UIColor(red: CGFloat(r)/255.0, green: CGFloat(g)/255.0, blue: CGFloat(b)/255.0, alpha: CGFloat(a))
-    }
-}
-
-func ==(lhs: RGBA, rhs: RGBA) -> Bool {
-    return lhs.r == rhs.r && lhs.g == rhs.g && lhs.b == rhs.b && lhs.a == rhs.a
+public struct ColorMatch {
+    let name: String
+    let values: RGBA
+    let distance: Double
 }
 
 public struct WaddaColor {
@@ -46,10 +38,13 @@ public struct WaddaColor {
         self.values = RGBA(r, g, b, a)
     }
 
-    func nameOfClosestMatch() -> String {
+    func closestMatch() -> ColorMatch {
         if let perfectMatch = ColorNames.filter({ k, v in v == self.values }).first {
-            return perfectMatch.0
+            return ColorMatch(name: perfectMatch.0, values: perfectMatch.1, distance: 1.0)
         }
-        return "Horse"
+
+        // TODO: binary search based on lightness and/or saturation?
+
+        return ColorMatch(name: "Horse", values: RGBA(0, 0, 0, 1.0), distance: 0.0)
     }
 }
