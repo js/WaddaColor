@@ -10,6 +10,8 @@
 		04E381BA1C7CF76B0050A0DB /* WaddaColor.h in Headers */ = {isa = PBXBuildFile; fileRef = 04E381B91C7CF76B0050A0DB /* WaddaColor.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		04E381C11C7CF76B0050A0DB /* WaddaColor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04E381B61C7CF76B0050A0DB /* WaddaColor.framework */; };
 		04E381C61C7CF76B0050A0DB /* WaddaColorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E381C51C7CF76B0050A0DB /* WaddaColorTests.swift */; };
+		04E381D11C7CF7910050A0DB /* WaddaColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E381D01C7CF7910050A0DB /* WaddaColor.swift */; };
+		04E381D31C7CF7F10050A0DB /* ColorNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E381D21C7CF7F10050A0DB /* ColorNames.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +31,8 @@
 		04E381C01C7CF76B0050A0DB /* WaddaColorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WaddaColorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		04E381C51C7CF76B0050A0DB /* WaddaColorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaddaColorTests.swift; sourceTree = "<group>"; };
 		04E381C71C7CF76B0050A0DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		04E381D01C7CF7910050A0DB /* WaddaColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaddaColor.swift; sourceTree = "<group>"; };
+		04E381D21C7CF7F10050A0DB /* ColorNames.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorNames.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +77,8 @@
 			children = (
 				04E381B91C7CF76B0050A0DB /* WaddaColor.h */,
 				04E381BB1C7CF76B0050A0DB /* Info.plist */,
+				04E381D01C7CF7910050A0DB /* WaddaColor.swift */,
+				04E381D21C7CF7F10050A0DB /* ColorNames.swift */,
 			);
 			path = WaddaColor;
 			sourceTree = "<group>";
@@ -194,6 +200,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04E381D31C7CF7F10050A0DB /* ColorNames.swift in Sources */,
+				04E381D11C7CF7910050A0DB /* WaddaColor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,6 +316,7 @@
 		04E381CB1C7CF76B0050A0DB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -318,12 +327,14 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.johansorensen.WaddaColor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		04E381CC1C7CF76B0050A0DB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
