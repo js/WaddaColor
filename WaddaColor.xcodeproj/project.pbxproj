@@ -49,6 +49,7 @@
 		04E381E71C7E4B560050A0DB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		04E381EA1C7E4B560050A0DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		04E381EC1C7E4B560050A0DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		04E381F01C7E5CB30050A0DB /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +81,7 @@
 		04E381AC1C7CF76B0050A0DB = {
 			isa = PBXGroup;
 			children = (
+				04E381F01C7E5CB30050A0DB /* README.md */,
 				04E381B81C7CF76B0050A0DB /* WaddaColor */,
 				04E381C41C7CF76B0050A0DB /* WaddaColorTests */,
 				04E381DD1C7E4B560050A0DB /* WhatTheColor */,
