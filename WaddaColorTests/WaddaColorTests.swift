@@ -56,6 +56,24 @@ class WaddaColorTests: XCTestCase {
         XCTAssertEqual(roundToPlaces(lab.b), -0.006)
     }
 
+    func testRGBtoHSL() {
+        let rgb = RGBA(128, 54, 43, 1.0)
+        let hsl = HSL(rgb: rgb)
+        XCTAssertEqualWithAccuracy(hsl.hue, 7.765, accuracy: 0.001)
+        XCTAssertEqualWithAccuracy(hsl.saturation, 49.708, accuracy: 0.001)
+        XCTAssertEqualWithAccuracy(hsl.lightness, 33.529, accuracy: 0.001)
+    }
+
+    func testHSLisDarkOrLight() {
+        let dark = HSL(rgb: RGBA(33, 33, 33, 1.0))
+        XCTAssertTrue(dark.isDark())
+        XCTAssertFalse(dark.isLight())
+
+        let light = HSL(rgb: RGBA(243, 243, 243, 1.0))
+        XCTAssertTrue(light.isLight())
+        XCTAssertFalse(light.isDark())
+    }
+
     func testDistance() {
         let black = RGBA(0, 0, 0, 1.0)
         let almostBlack = RGBA(1, 1, 1, 1.0)
@@ -67,5 +85,6 @@ class WaddaColorTests: XCTestCase {
         XCTAssertEqual(roundToPlaces(black.distanceTo(almostBlack)), 0.274)
         XCTAssertEqual(black.distanceTo(black), 0.0)
     }
+
 
 }

@@ -38,7 +38,7 @@ public struct RGBA: Equatable, CustomStringConvertible {
     }
 
     public var description: String {
-        return "<RGB(r: \(r), g: \(g), b: \(b), a: \(a))>"
+        return "<RGBA(r: \(r), g: \(g), b: \(b), a: \(a))>"
     }
 }
 
@@ -46,6 +46,56 @@ public func ==(lhs: RGBA, rhs: RGBA) -> Bool {
     return lhs.r == rhs.r && lhs.g == rhs.g && lhs.b == rhs.b && lhs.a == rhs.a
 }
 
+public struct HSL: CustomStringConvertible {
+    public let hue: Double
+    public let saturation: Double
+    public let lightness: Double // 0-100
+
+    public init(rgb: RGBA) {
+        let red = Double(rgb.r) / 255.0
+        let green = Double(rgb.g) / 255.0
+        let blue = Double(rgb.b) / 255.0
+
+        let maximum = max(red, max(green, blue))
+        let minimum = min(red, min(green, blue))
+        var h = 0.0
+        var s = 0.0
+        let l = (maximum + minimum) / 2.0;
+
+        let delta = maximum - minimum
+        if delta != 0 {
+            if l > 0.5 {
+                s = delta / (2.0 - maximum - minimum)
+            } else {
+                s = delta / (maximum + minimum)
+            }
+            if maximum == red {
+                h = (green - blue) / delta + (green < blue ? 6.0 : 0)
+            } else if maximum == green {
+                h = (blue - red) / delta + 2.0
+            } else if maximum == blue {
+                h = (red - green) / delta + 4.0
+            }
+            h /= 6.0;
+            h *= 3.6;
+        }
+        self.hue = h * 100.0
+        self.saturation = s * 100.0
+        self.lightness = l * 100.0
+    }
+
+    public func isLight(cutoff: Double = 50) -> Bool {
+        return lightness >= cutoff
+    }
+
+    public func isDark(cutoff: Double = 50) -> Bool {
+        return lightness <= cutoff
+    }
+
+    public var description: String {
+        return "<HSL(hue: \(hue), saturation: \(saturation), lightness: \(lightness))>"
+    }
+}
 
 public struct XYZ: CustomStringConvertible {
     public let x: Double
