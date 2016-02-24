@@ -28,6 +28,12 @@ extension FirstViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCellWithIdentifier("ColorCell", forIndexPath: indexPath)
         let color = colors[indexPath.row]
         cell.textLabel?.text = color.name
+        let hsl = HSL(rgb: color.rgba)
+        if hsl.isLight() {
+            cell.textLabel?.textColor = UIColor.blackColor()
+        } else {
+            cell.textLabel?.textColor = UIColor.whiteColor()
+        }
         cell.textLabel?.backgroundColor = color.rgba.color
         cell.contentView.backgroundColor = color.rgba.color
         return cell
