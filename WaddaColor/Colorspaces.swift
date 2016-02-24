@@ -8,6 +8,8 @@
 
 import Foundation
 
+typealias ColorDistance = Double
+
 struct RGBA: Equatable, CustomStringConvertible {
     let r: Int // 0-255
     let g: Int
@@ -26,8 +28,8 @@ struct RGBA: Equatable, CustomStringConvertible {
         return UIColor(red: CGFloat(r)/255.0, green: CGFloat(g)/255.0, blue: CGFloat(b)/255.0, alpha: CGFloat(a))
     }
 
-    // Returns a value between 0.0 and 1.0, where 1.0 is a perfect match
-    func distanceTo(other: RGBA) -> Double {
+    // Returns a value between 0.0 and 100.0, where 100.0 is a perfect match
+    func distanceTo(other: RGBA) -> ColorDistance {
         let xyz1 = XYZ(rgb: self)
         let xyz2 = XYZ(rgb: other)
         let lab1 = LAB(xyz: xyz1)

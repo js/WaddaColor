@@ -26,7 +26,7 @@ class WaddaColorTests: XCTestCase {
         let wadda = WaddaColor(color: UIColor(white: 0.01, alpha: 1.0))
         let blackish = wadda.closestMatch()
         XCTAssertEqual(blackish.name, "Black")
-        XCTAssertEqual(blackish.distance, 0.01)
+        XCTAssertEqualWithAccuracy(blackish.distance, 0.548, accuracy: 0.001)
     }
 
     private func roundToPlaces(val: Double, places: Int = 3) -> Double {
@@ -38,7 +38,7 @@ class WaddaColorTests: XCTestCase {
         let wadda = WaddaColor(color: UIColor(white: 0.99, alpha: 1.0))
         let whitish  = wadda.closestMatch()
         XCTAssertEqual(whitish.name, "White")
-        XCTAssertEqual(whitish.distance, 0.01)
+        XCTAssertEqualWithAccuracy(whitish.distance, 1.036, accuracy: 0.001)
     }
 
     func testRGBtoXYZ() {

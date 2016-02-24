@@ -19,11 +19,12 @@ public extension UIColor {
 public struct ColorMatch {
     let name: String
     let values: RGBA
-    let distance: Double
+    let distance: ColorDistance
 }
 
 public struct WaddaColor {
     let values: RGBA
+    let colorNames = AllColorNames()
 
     init(color: UIColor) {
         var red: CGFloat = 0
@@ -39,12 +40,17 @@ public struct WaddaColor {
     }
 
     func closestMatch() -> ColorMatch {
-        if let perfectMatch = ColorNames.filter({ k, v in v == self.values }).first {
+        if let perfectMatch = colorNames.filter({ k, v in v == self.values }).first {
             return ColorMatch(name: perfectMatch.0, values: perfectMatch.1, distance: 1.0)
         }
 
         // TODO: binary search based on lightness and/or saturation?
 
-        return ColorMatch(name: "Horse", values: RGBA(0, 0, 0, 1.0), distance: 0.0)
+        let matches: [ColorMatch] = colorNames.map({ name, color in
+            return ColorMatch(name: name, values: color, distance: color.distanceTo(self.values))
+        })
+        let sortedMatches = matches.sort({ $0.distance < $1.distance })
+
+        return sortedMatches.first!
     }
 }
