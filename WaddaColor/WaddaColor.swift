@@ -24,7 +24,7 @@ public struct ColorMatch {
 
 public struct WaddaColor {
     let values: RGBA
-    let colorNames = ColorThesaurusNames()
+    public let colorNames = ColorThesaurusNames()
 
     init(color: UIColor) {
         var red: CGFloat = 0

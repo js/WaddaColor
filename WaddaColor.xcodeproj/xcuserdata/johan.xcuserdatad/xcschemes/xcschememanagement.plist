@@ -9,6 +9,11 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>WhatTheColor.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
@@ -18,6 +23,11 @@
 			<true/>
 		</dict>
 		<key>04E381BF1C7CF76B0050A0DB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>04E381DB1C7E4B560050A0DB</key>
 		<dict>
 			<key>primary</key>
 			<true/>

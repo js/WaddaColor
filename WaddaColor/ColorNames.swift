@@ -9,7 +9,7 @@
 import UIKit
 
 // http://ingridsundberg.com/2014/02/04/the-color-thesaurus/
-func ColorThesaurusNames() -> [String: RGBA] {
+public func ColorThesaurusNames() -> [String: RGBA] {
     return [
         // Black
         "Black": RGBA(0, 0, 0, 1.0),

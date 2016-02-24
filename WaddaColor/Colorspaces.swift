@@ -8,15 +8,15 @@
 
 import Foundation
 
-typealias ColorDistance = Double
+public typealias ColorDistance = Double
 
-struct RGBA: Equatable, CustomStringConvertible {
-    let r: Int // 0-255
-    let g: Int
-    let b: Int
-    let a: Float // 0.0-1.0
+public struct RGBA: Equatable, CustomStringConvertible {
+    public let r: Int // 0-255
+    public let g: Int
+    public let b: Int
+    public let a: Float // 0.0-1.0
 
-    init(_ r: Int, _ g: Int, _ b: Int, _ a: Float) {
+    public init(_ r: Int, _ g: Int, _ b: Int, _ a: Float) {
         // TODO: precondition clamps
         self.r = r
         self.g = g
@@ -24,12 +24,12 @@ struct RGBA: Equatable, CustomStringConvertible {
         self.a = a
     }
 
-    var color: UIColor {
+    public var color: UIColor {
         return UIColor(red: CGFloat(r)/255.0, green: CGFloat(g)/255.0, blue: CGFloat(b)/255.0, alpha: CGFloat(a))
     }
 
     // Returns a value between 0.0 and 100.0, where 100.0 is a perfect match
-    func distanceTo(other: RGBA) -> ColorDistance {
+    public func distanceTo(other: RGBA) -> ColorDistance {
         let xyz1 = XYZ(rgb: self)
         let xyz2 = XYZ(rgb: other)
         let lab1 = LAB(xyz: xyz1)
@@ -37,22 +37,22 @@ struct RGBA: Equatable, CustomStringConvertible {
         return lab1.distance(lab2)
     }
 
-    var description: String {
+    public var description: String {
         return "<RGB(r: \(r), g: \(g), b: \(b), a: \(a))>"
     }
 }
 
-func ==(lhs: RGBA, rhs: RGBA) -> Bool {
+public func ==(lhs: RGBA, rhs: RGBA) -> Bool {
     return lhs.r == rhs.r && lhs.g == rhs.g && lhs.b == rhs.b && lhs.a == rhs.a
 }
 
 
-struct XYZ: CustomStringConvertible {
-    let x: Double
-    let y: Double
-    let z: Double
+public struct XYZ: CustomStringConvertible {
+    public let x: Double
+    public let y: Double
+    public let z: Double
 
-    init(rgb: RGBA) {
+    public init(rgb: RGBA) {
         var red = Double(rgb.r) / 255.0
         var green = Double(rgb.g) / 255.0
         var blue = Double(rgb.b) / 255.0
@@ -86,16 +86,16 @@ struct XYZ: CustomStringConvertible {
         self.z = red * 0.0193 + green * 0.1192 + blue * 0.9505
     }
 
-    var description: String {
+    public var description: String {
         return "<XYZ(x: \(x), y: \(y), z: \(z))>"
     }
 }
 
 
-struct LAB: CustomStringConvertible {
-    let l: Double
-    let a: Double
-    let b: Double
+public struct LAB: CustomStringConvertible {
+    public let l: Double
+    public let a: Double
+    public let b: Double
 
     //    init(l: Double, a: Double, b: Double) {
     //        self.l = l
@@ -103,7 +103,7 @@ struct LAB: CustomStringConvertible {
     //        self.b = b
     //    }
 
-    init(xyz: XYZ) {
+    public init(xyz: XYZ) {
         var x = xyz.x / 95.047
         var y = xyz.y / 100.0
         var z = xyz.z / 108.883
@@ -132,7 +132,7 @@ struct LAB: CustomStringConvertible {
     }
 
     // CIE1994 distance
-    func distance(other: LAB) -> Double {
+    public func distance(other: LAB) -> Double {
         let k1 = 0.045
         let k2 = 0.015
 
@@ -157,7 +157,7 @@ struct LAB: CustomStringConvertible {
         return deltaE
     }
     
-    var description: String {
+    public var description: String {
         return "<LAB(l: \(l), a: \(a), b: \(b))>"
     }
 }

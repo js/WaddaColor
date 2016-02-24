@@ -13,6 +13,12 @@
 		04E381D11C7CF7910050A0DB /* WaddaColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E381D01C7CF7910050A0DB /* WaddaColor.swift */; };
 		04E381D31C7CF7F10050A0DB /* ColorNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E381D21C7CF7F10050A0DB /* ColorNames.swift */; };
 		04E381D51C7D135F0050A0DB /* Colorspaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E381D41C7D135F0050A0DB /* Colorspaces.swift */; };
+		04E381DF1C7E4B560050A0DB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E381DE1C7E4B560050A0DB /* AppDelegate.swift */; };
+		04E381E11C7E4B560050A0DB /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E381E01C7E4B560050A0DB /* FirstViewController.swift */; };
+		04E381E31C7E4B560050A0DB /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E381E21C7E4B560050A0DB /* SecondViewController.swift */; };
+		04E381E61C7E4B560050A0DB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04E381E41C7E4B560050A0DB /* Main.storyboard */; };
+		04E381E81C7E4B560050A0DB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04E381E71C7E4B560050A0DB /* Assets.xcassets */; };
+		04E381EB1C7E4B560050A0DB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04E381E91C7E4B560050A0DB /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +41,14 @@
 		04E381D01C7CF7910050A0DB /* WaddaColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaddaColor.swift; sourceTree = "<group>"; };
 		04E381D21C7CF7F10050A0DB /* ColorNames.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorNames.swift; sourceTree = "<group>"; };
 		04E381D41C7D135F0050A0DB /* Colorspaces.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colorspaces.swift; sourceTree = "<group>"; };
+		04E381DC1C7E4B560050A0DB /* WhatTheColor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhatTheColor.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		04E381DE1C7E4B560050A0DB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		04E381E01C7E4B560050A0DB /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
+		04E381E21C7E4B560050A0DB /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		04E381E51C7E4B560050A0DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		04E381E71C7E4B560050A0DB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		04E381EA1C7E4B560050A0DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		04E381EC1C7E4B560050A0DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +67,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		04E381D91C7E4B560050A0DB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -61,6 +82,7 @@
 			children = (
 				04E381B81C7CF76B0050A0DB /* WaddaColor */,
 				04E381C41C7CF76B0050A0DB /* WaddaColorTests */,
+				04E381DD1C7E4B560050A0DB /* WhatTheColor */,
 				04E381B71C7CF76B0050A0DB /* Products */,
 			);
 			sourceTree = "<group>";
@@ -70,6 +92,7 @@
 			children = (
 				04E381B61C7CF76B0050A0DB /* WaddaColor.framework */,
 				04E381C01C7CF76B0050A0DB /* WaddaColorTests.xctest */,
+				04E381DC1C7E4B560050A0DB /* WhatTheColor.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -93,6 +116,20 @@
 				04E381C71C7CF76B0050A0DB /* Info.plist */,
 			);
 			path = WaddaColorTests;
+			sourceTree = "<group>";
+		};
+		04E381DD1C7E4B560050A0DB /* WhatTheColor */ = {
+			isa = PBXGroup;
+			children = (
+				04E381DE1C7E4B560050A0DB /* AppDelegate.swift */,
+				04E381E01C7E4B560050A0DB /* FirstViewController.swift */,
+				04E381E21C7E4B560050A0DB /* SecondViewController.swift */,
+				04E381E41C7E4B560050A0DB /* Main.storyboard */,
+				04E381E71C7E4B560050A0DB /* Assets.xcassets */,
+				04E381E91C7E4B560050A0DB /* LaunchScreen.storyboard */,
+				04E381EC1C7E4B560050A0DB /* Info.plist */,
+			);
+			path = WhatTheColor;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -145,6 +182,23 @@
 			productReference = 04E381C01C7CF76B0050A0DB /* WaddaColorTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		04E381DB1C7E4B560050A0DB /* WhatTheColor */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 04E381EF1C7E4B560050A0DB /* Build configuration list for PBXNativeTarget "WhatTheColor" */;
+			buildPhases = (
+				04E381D81C7E4B560050A0DB /* Sources */,
+				04E381D91C7E4B560050A0DB /* Frameworks */,
+				04E381DA1C7E4B560050A0DB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WhatTheColor;
+			productName = WhatTheColor;
+			productReference = 04E381DC1C7E4B560050A0DB /* WhatTheColor.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -161,6 +215,9 @@
 					04E381BF1C7CF76B0050A0DB = {
 						CreatedOnToolsVersion = 7.2;
 					};
+					04E381DB1C7E4B560050A0DB = {
+						CreatedOnToolsVersion = 7.2;
+					};
 				};
 			};
 			buildConfigurationList = 04E381B01C7CF76B0050A0DB /* Build configuration list for PBXProject "WaddaColor" */;
@@ -169,6 +226,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 04E381AC1C7CF76B0050A0DB;
 			productRefGroup = 04E381B71C7CF76B0050A0DB /* Products */;
@@ -177,6 +235,7 @@
 			targets = (
 				04E381B51C7CF76B0050A0DB /* WaddaColor */,
 				04E381BF1C7CF76B0050A0DB /* WaddaColorTests */,
+				04E381DB1C7E4B560050A0DB /* WhatTheColor */,
 			);
 		};
 /* End PBXProject section */
@@ -193,6 +252,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04E381DA1C7E4B560050A0DB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04E381EB1C7E4B560050A0DB /* LaunchScreen.storyboard in Resources */,
+				04E381E81C7E4B560050A0DB /* Assets.xcassets in Resources */,
+				04E381E61C7E4B560050A0DB /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -217,6 +286,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		04E381D81C7E4B560050A0DB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04E381E31C7E4B560050A0DB /* SecondViewController.swift in Sources */,
+				04E381DF1C7E4B560050A0DB /* AppDelegate.swift in Sources */,
+				04E381E11C7E4B560050A0DB /* FirstViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -226,6 +305,25 @@
 			targetProxy = 04E381C21C7CF76B0050A0DB /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		04E381E41C7E4B560050A0DB /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				04E381E51C7E4B560050A0DB /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		04E381E91C7E4B560050A0DB /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				04E381EA1C7E4B560050A0DB /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		04E381C81C7CF76B0050A0DB /* Debug */ = {
@@ -372,6 +470,28 @@
 			};
 			name = Release;
 		};
+		04E381ED1C7E4B560050A0DB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = WhatTheColor/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.johansorensen.WhatTheColor;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		04E381EE1C7E4B560050A0DB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = WhatTheColor/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.johansorensen.WhatTheColor;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -391,12 +511,22 @@
 				04E381CC1C7CF76B0050A0DB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		04E381CD1C7CF76B0050A0DB /* Build configuration list for PBXNativeTarget "WaddaColorTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				04E381CE1C7CF76B0050A0DB /* Debug */,
 				04E381CF1C7CF76B0050A0DB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		04E381EF1C7E4B560050A0DB /* Build configuration list for PBXNativeTarget "WhatTheColor" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				04E381ED1C7E4B560050A0DB /* Debug */,
+				04E381EE1C7E4B560050A0DB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
