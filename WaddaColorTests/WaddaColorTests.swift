@@ -19,13 +19,13 @@ class WaddaColorTests: XCTestCase {
 
     func testIsItBlackOrWhite() {
         XCTAssertEqual(UIColor.blackColor().name, "Black")
-        XCTAssertEqual(UIColor.whiteColor().name, "White")
+        XCTAssertEqual(UIColor.whiteColor().name, "Daisy")
     }
 
     func testBlackish() {
         let wadda = WaddaColor(color: UIColor(white: 0.01, alpha: 1.0))
         let blackish = wadda.closestMatch()
-        XCTAssertEqual(blackish.name, "Black")
+        XCTAssertEqual(blackish.name, "Ink")
         XCTAssertEqualWithAccuracy(blackish.distance, 0.548, accuracy: 0.001)
     }
 
@@ -37,7 +37,7 @@ class WaddaColorTests: XCTestCase {
     func testWhiteish() {
         let wadda = WaddaColor(color: UIColor(white: 0.99, alpha: 1.0))
         let whitish  = wadda.closestMatch()
-        XCTAssertEqual(whitish.name, "White")
+        XCTAssertEqual(whitish.name, "Daisy")
         XCTAssertEqualWithAccuracy(whitish.distance, 1.036, accuracy: 0.001)
     }
 
