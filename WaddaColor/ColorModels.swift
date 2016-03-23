@@ -33,12 +33,6 @@ public struct RGBA: Equatable, CustomStringConvertible {
         self.a = a
     }
 
-
-    public init(_ r: Int, _ g: Int, _ b: Int, _ a: Double) {
-        clampedPrecondition(a)
-        self.init(Double(r) / 255.0, Double(g) / 255.0, Double(b) / 255.0, a)
-    }
-
     public var color: UIColor {
         return UIColor(red: CGFloat(r), green: CGFloat(g), blue: CGFloat(b), alpha: CGFloat(a))
     }

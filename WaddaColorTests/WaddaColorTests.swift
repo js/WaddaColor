@@ -37,70 +37,75 @@ class WaddaColorTests: XCTestCase {
     }
 
     func testRGBtoXYZ() {
-        let xyz = XYZ(rgb: RGBA(128, 128, 128, 1.0))
-        XCTAssertEqualWithAccuracy(xyz.x, 20.518, accuracy: 0.001)
-        XCTAssertEqualWithAccuracy(xyz.y, 21.586, accuracy: 0.001)
-        XCTAssertEqualWithAccuracy(xyz.z, 23.507, accuracy: 0.001)
+        let xyz = XYZ(rgb: RGBA(0.5, 0.5, 0.5, 1.0))
+        XCTAssertEqualWithAccuracy(xyz.x, 20.345, accuracy: 0.001)
+        XCTAssertEqualWithAccuracy(xyz.y, 21.404, accuracy: 0.001)
+        XCTAssertEqualWithAccuracy(xyz.z, 23.309, accuracy: 0.001)
     }
 
     func testXYZtoLAB() {
-        let xyz = XYZ(rgb: RGBA(128, 128, 128, 1.0))
+        let xyz = XYZ(rgb: RGBA(0.5, 0.5, 0.5, 1.0))
         let lab = LAB(xyz: xyz)
-        XCTAssertEqualWithAccuracy(lab.l, 53.585, accuracy: 0.001)
+        XCTAssertEqualWithAccuracy(lab.l, 53.389, accuracy: 0.001)
         XCTAssertEqualWithAccuracy(lab.a, 0.003, accuracy: 0.001)
         XCTAssertEqualWithAccuracy(lab.b, -0.006, accuracy: 0.001)
     }
 
     func testRGBtoHSL() {
-        let rgb = RGBA(128, 54, 43, 1.0)
+        let rgb = RGBA(128/255, 54/255, 43/255, 1.0)
         let hsl = HSL(rgb: rgb)
         XCTAssertEqualWithAccuracy(hsl.hue, 7.765, accuracy: 0.001)
         XCTAssertEqualWithAccuracy(hsl.saturation, 49.708, accuracy: 0.001)
         XCTAssertEqualWithAccuracy(hsl.lightness, 33.529, accuracy: 0.001)
+
+        let redHSL = HSL(rgb: RGBA(1, 0, 0, 1))
+        XCTAssertEqual(redHSL.hue, 0)
+        XCTAssertEqual(redHSL.saturation, 100)
+        XCTAssertEqual(redHSL.lightness, 50)
     }
 
     func testHSLisDarkOrLight() {
-        let dark = HSL(rgb: RGBA(33, 33, 33, 1.0))
+        let dark = HSL(rgb: RGBA(33/255, 33/255, 33/255, 1.0))
         XCTAssertTrue(dark.isDark())
         XCTAssertFalse(dark.isLight())
 
-        let light = HSL(rgb: RGBA(243, 243, 243, 1.0))
+        let light = HSL(rgb: RGBA(243/255, 243/255, 243/255, 1.0))
         XCTAssertTrue(light.isLight())
         XCTAssertFalse(light.isDark())
     }
 
     func testDistance() {
         let black = RGBA(0, 0, 0, 1.0)
-        let almostBlack = RGBA(1, 1, 1, 1.0)
-        let gray = RGBA(127, 127, 127, 1.0)
-        let white = RGBA(255, 255, 255, 1.0)
+        let almostBlack = RGBA(0.99, 0.99, 0.99, 1.0)
+        let gray = RGBA(0.5, 0.5, 0.5, 1.0)
+        let white = RGBA(1, 1, 1, 1.0)
 
         XCTAssertEqualWithAccuracy(black.distanceTo(white), 100.000, accuracy: 0.001)
-        XCTAssertEqualWithAccuracy(black.distanceTo(gray), 53.193, accuracy: 0.001)
-        XCTAssertEqualWithAccuracy(black.distanceTo(almostBlack), 0.274, accuracy: 0.001)
+        XCTAssertEqualWithAccuracy(black.distanceTo(gray), 53.389, accuracy: 0.001)
+        XCTAssertEqualWithAccuracy(black.distanceTo(almostBlack), 99.1195, accuracy: 0.0001)
         XCTAssertEqual(black.distanceTo(black), 0.0)
     }
 
     func testLuminance() {
         let black = WaddaColor(r: 0, g: 0, b: 0, a: 1.0)
-        let almostBlack = WaddaColor(r: 1, g: 1, b: 1, a: 1.0)
-        let gray = WaddaColor(r: 127, g: 127, b: 127, a: 1.0)
-        let white = WaddaColor(r: 255, g: 255, b: 255, a: 1.0)
+        let almostBlack = WaddaColor(r: 0.99, g: 0.99, b: 0.99, a: 1.0)
+        let gray = WaddaColor(r: 0.5, g: 0.5, b: 0.5, a: 1.0)
+        let white = WaddaColor(r: 1, g: 1, b: 1, a: 1.0)
 
         XCTAssertEqual(black.luminance, 0.0)
-        XCTAssertEqualWithAccuracy(almostBlack.luminance, 0.004, accuracy: 0.0001)
-        XCTAssertEqualWithAccuracy(gray.luminance, 0.498, accuracy: 0.0001)
+        XCTAssertEqual(almostBlack.luminance, 0.99)
+        XCTAssertEqual(gray.luminance, 0.5)
         XCTAssertEqual(white.luminance, 1.0)
     }
 
     func testContrastingColor() {
         let black = WaddaColor(r: 0, g: 0, b: 0, a: 1.0)
-        let gray = WaddaColor(r: 127, g: 127, b: 127, a: 1.0)
-        let white = WaddaColor(r: 255, g: 255, b: 255, a: 1.0)
+        let gray = WaddaColor(r: 0.5, g: 0.5, b: 0.5, a: 1.0)
+        let white = WaddaColor(r: 1, g: 1, b: 1, a: 1.0)
 
-        XCTAssertEqual(black.contrastingColor(), white)
-        XCTAssertEqual(white.contrastingColor(), black)
-        XCTAssertEqual(gray.contrastingColor(), white)
+        XCTAssertEqual(black.contrastingColor().values, white.values)
+        XCTAssertEqual(white.contrastingColor().values, black.values)
+        XCTAssertEqual(gray.contrastingColor().values, white.values)
     }
 
     func testComplementaryColor() {

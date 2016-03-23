@@ -39,10 +39,6 @@ public struct WaddaColor: Equatable {
         self.values = RGBA(r, g, b, a)
     }
 
-    init(r: Int, g: Int, b: Int, a: Double) {
-        self.init(r: Double(r) / 255.0, g: Double(g) / 255.0, b: Double(b) / 255.0, a: a)
-    }
-
     func closestMatch() -> ColorMatch {
         if let perfectMatch = colorNames.filter({ k, v in v == self.values }).first {
             return ColorMatch(name: perfectMatch.0, values: perfectMatch.1, distance: 1.0)
@@ -68,7 +64,7 @@ public struct WaddaColor: Equatable {
         if luminance > 0.6 {
             return WaddaColor(r: 0, g: 0, b: 0, a: 1.0)
         } else {
-            return WaddaColor(r: 255, g: 255, b: 255, a: 1.0)
+            return WaddaColor(r: 1, g: 1, b: 1, a: 1.0)
         }
     }
 
