@@ -22,11 +22,11 @@ public struct ColorMatch {
     let distance: ColorDistance
 }
 
-public struct WaddaColor: Equatable {
-    let values: RGBA
+public struct WaddaColor: Equatable, CustomStringConvertible {
+    public let values: RGBA
     public let colorNames = ColorThesaurusNames()
 
-    init(color: UIColor) {
+    public init(color: UIColor) {
         var red: CGFloat = 0
         var green: CGFloat = 0
         var blue: CGFloat = 0
@@ -35,11 +35,19 @@ public struct WaddaColor: Equatable {
         self.init(r: Double(red), g: Double(green), b: Double(blue), a: Double(alpha))
     }
 
-    init(r: Double, g: Double, b: Double, a: Double) {
-        self.values = RGBA(r, g, b, a)
+    public init(r: Double, g: Double, b: Double, a: Double) {
+        self.init(values: RGBA(r, g, b, a))
     }
 
-    func closestMatch() -> ColorMatch {
+    public init(values: RGBA) {
+        self.values = values
+    }
+
+    public var color: UIColor {
+        return values.color
+    }
+
+    public func closestMatch() -> ColorMatch {
         if let perfectMatch = colorNames.filter({ k, v in v == self.values }).first {
             return ColorMatch(name: perfectMatch.0, values: perfectMatch.1, distance: 1.0)
         }
@@ -55,12 +63,12 @@ public struct WaddaColor: Equatable {
     }
 
     // Returns the luma value (0.0-1.0)
-    var luminance: CGFloat {
+    public var luminance: CGFloat {
         // http://en.wikipedia.org/wiki/Luma_(video) Y = 0.2126 R + 0.7152 G + 0.0722 B
         return 0.2126 * CGFloat(values.r) + 0.7152 * CGFloat(values.g) + 0.0722 * CGFloat(values.b)
     }
 
-    func contrastingColor() -> WaddaColor {
+    public func contrastingColor() -> WaddaColor {
         if luminance > 0.6 {
             return WaddaColor(r: 0, g: 0, b: 0, a: 1.0)
         } else {
@@ -68,8 +76,8 @@ public struct WaddaColor: Equatable {
         }
     }
 
-    func complementaryColor() -> WaddaColor {
-        if values == RGBA(0.0, 0.0, 0.0, 1.0) || values == RGBA(1.0, 1.0, 1.0, 1.0) {
+    public func complementaryColor() -> WaddaColor {
+        if luminance < 0.1 || luminance > 0.9 {
             return contrastingColor()
         }
 
@@ -85,7 +93,7 @@ public struct WaddaColor: Equatable {
         return WaddaColor(color: color)
     }
 
-    var description: String {
+    public var description: String {
         return "<WaddaColor(values: \(values))>"
     }
 }

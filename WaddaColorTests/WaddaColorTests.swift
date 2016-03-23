@@ -76,24 +76,26 @@ class WaddaColorTests: XCTestCase {
 
     func testDistance() {
         let black = RGBA(0, 0, 0, 1.0)
-        let almostBlack = RGBA(0.99, 0.99, 0.99, 1.0)
+        let almostWhite = RGBA(0.99, 0.99, 0.99, 1.0)
         let gray = RGBA(0.5, 0.5, 0.5, 1.0)
         let white = RGBA(1, 1, 1, 1.0)
 
         XCTAssertEqualWithAccuracy(black.distanceTo(white), 100.000, accuracy: 0.001)
         XCTAssertEqualWithAccuracy(black.distanceTo(gray), 53.389, accuracy: 0.001)
-        XCTAssertEqualWithAccuracy(black.distanceTo(almostBlack), 99.1195, accuracy: 0.0001)
+        XCTAssertEqualWithAccuracy(black.distanceTo(almostWhite), 99.1195, accuracy: 0.0001)
         XCTAssertEqual(black.distanceTo(black), 0.0)
     }
 
     func testLuminance() {
         let black = WaddaColor(r: 0, g: 0, b: 0, a: 1.0)
-        let almostBlack = WaddaColor(r: 0.99, g: 0.99, b: 0.99, a: 1.0)
+        let almostWhite = WaddaColor(r: 0.99, g: 0.99, b: 0.99, a: 1.0)
+        let almostWhite2 = WaddaColor(r: 0.85, g: 0.85, b: 0.85, a: 1.0)
         let gray = WaddaColor(r: 0.5, g: 0.5, b: 0.5, a: 1.0)
         let white = WaddaColor(r: 1, g: 1, b: 1, a: 1.0)
 
         XCTAssertEqual(black.luminance, 0.0)
-        XCTAssertEqual(almostBlack.luminance, 0.99)
+        XCTAssertEqual(almostWhite.luminance, 0.99)
+        XCTAssertEqual(almostWhite2.luminance, 0.850)
         XCTAssertEqual(gray.luminance, 0.5)
         XCTAssertEqual(white.luminance, 1.0)
     }
@@ -102,10 +104,12 @@ class WaddaColorTests: XCTestCase {
         let black = WaddaColor(r: 0, g: 0, b: 0, a: 1.0)
         let gray = WaddaColor(r: 0.5, g: 0.5, b: 0.5, a: 1.0)
         let white = WaddaColor(r: 1, g: 1, b: 1, a: 1.0)
+        let almostWhite = WaddaColor(r: 0.9, g: 0.9, b: 0.9, a: 1.0)
 
         XCTAssertEqual(black.contrastingColor().values, white.values)
         XCTAssertEqual(white.contrastingColor().values, black.values)
         XCTAssertEqual(gray.contrastingColor().values, white.values)
+        XCTAssertEqual(almostWhite.contrastingColor().values, black.values)
     }
 
     func testComplementaryColor() {
