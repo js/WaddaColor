@@ -73,23 +73,19 @@ public struct WaddaColor: Equatable {
     }
 
     func complementaryColor() -> WaddaColor {
+        if values == RGBA(0.0, 0.0, 0.0, 1.0) || values == RGBA(1.0, 1.0, 1.0, 1.0) {
+            return contrastingColor()
+        }
+
         var hue: CGFloat = 0
         var saturation: CGFloat = 0
         var brightness: CGFloat = 0
         var alpha: CGFloat = 0
         values.color.getHue(&hue, saturation: &saturation, brightness: &brightness, alpha: &alpha)
 
-        hue *= 360
-        saturation *= 100
-        brightness *= 100
+        let harmonicHue = abs(((hue*360.0) + (180.0/360.0)) % 360.0)
 
-        // Pick a complementary color by "rotating" the hue 180 degrees
-        hue += 180
-        if hue > 360 {
-            hue -= 360
-        }
-
-        let color = UIColor(hue: round(hue) / 360, saturation: round(saturation) / 100, brightness: round(brightness) / 100, alpha: alpha)
+        let color = UIColor(hue: harmonicHue, saturation: saturation, brightness: brightness, alpha: alpha)
         return WaddaColor(color: color)
     }
 

@@ -106,7 +106,14 @@ class WaddaColorTests: XCTestCase {
     func testComplementaryColor() {
         let red = WaddaColor(color: UIColor.redColor())
         let complementary = WaddaColor(r: 0.0, g: 1.0, b: 1.0, a: 1.0)
-
         XCTAssertEqual(red.complementaryColor().values, complementary.values)
+
+        let black = WaddaColor(color: UIColor.blackColor())
+        let complementaryBlack = WaddaColor(r: 1.0, g: 1.0, b: 1.0, a: 1.0)
+        XCTAssertEqual(black.complementaryColor().values, complementaryBlack.values)
+
+        let white = WaddaColor(color: UIColor.whiteColor())
+        let complementarywhite = WaddaColor(r: 0.0, g: 0.0, b: 0.0, a: 1.0)
+        XCTAssertEqual(white.complementaryColor().values, complementarywhite.values)
     }
 }
