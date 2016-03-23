@@ -86,5 +86,32 @@ class WaddaColorTests: XCTestCase {
         XCTAssertEqual(black.distanceTo(black), 0.0)
     }
 
+    func testLuminance() {
+        let black = WaddaColor(r: 0, g: 0, b: 0, a: 1.0)
+        let almostBlack = WaddaColor(r: 1, g: 1, b: 1, a: 1.0)
+        let gray = WaddaColor(r: 127, g: 127, b: 127, a: 1.0)
+        let white = WaddaColor(r: 255, g: 255, b: 255, a: 1.0)
 
+        XCTAssertEqual(black.luminance, 0.0)
+        XCTAssertEqualWithAccuracy(almostBlack.luminance, 0.004, accuracy: 0.0001)
+        XCTAssertEqualWithAccuracy(gray.luminance, 0.498, accuracy: 0.0001)
+        XCTAssertEqual(white.luminance, 1.0)
+    }
+
+    func testContrastingColor() {
+        let black = WaddaColor(r: 0, g: 0, b: 0, a: 1.0)
+        let gray = WaddaColor(r: 127, g: 127, b: 127, a: 1.0)
+        let white = WaddaColor(r: 255, g: 255, b: 255, a: 1.0)
+
+        XCTAssertEqual(black.contrastingColor(), white)
+        XCTAssertEqual(white.contrastingColor(), black)
+        XCTAssertEqual(gray.contrastingColor(), white)
+    }
+
+    func testComplementaryColor() {
+        let red = WaddaColor(color: UIColor.redColor())
+        let complementary = WaddaColor(r: 0, g: 255, b: 255, a: 1.0)
+
+        XCTAssertEqual(red.complementaryColor().values, complementary.values)
+    }
 }
