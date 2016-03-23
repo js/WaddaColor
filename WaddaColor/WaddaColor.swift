@@ -40,7 +40,7 @@ public struct WaddaColor: Equatable {
     }
 
     init(r: Int, g: Int, b: Int, a: Double) {
-        self.values = RGBA(r, g, b, a)
+        self.init(r: Double(r) / 255.0, g: Double(g) / 255.0, b: Double(b) / 255.0, a: a)
     }
 
     func closestMatch() -> ColorMatch {

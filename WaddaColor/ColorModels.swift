@@ -20,6 +20,7 @@ public struct RGBA: Equatable, CustomStringConvertible {
     public let b: Double
     public let a: Double // 0.0-1.0
 
+    // Initialize structure respresenting RGBA, where r, g, b, a should be between 0.0 and 1.0
     public init(_ r: Double, _ g: Double, _ b: Double, _ a: Double) {
         clampedPrecondition(r)
         clampedPrecondition(g)
@@ -32,13 +33,10 @@ public struct RGBA: Equatable, CustomStringConvertible {
         self.a = a
     }
 
+
     public init(_ r: Int, _ g: Int, _ b: Int, _ a: Double) {
         clampedPrecondition(a)
-
-        self.r = Double(r) / 255.0
-        self.g = Double(g) / 255.0
-        self.b = Double(b) / 255.0
-        self.a = a
+        self.init(Double(r) / 255.0, Double(g) / 255.0, Double(b) / 255.0, a)
     }
 
     public var color: UIColor {
