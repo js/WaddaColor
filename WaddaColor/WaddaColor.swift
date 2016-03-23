@@ -32,10 +32,14 @@ public struct WaddaColor: Equatable {
         var blue: CGFloat = 0
         var alpha: CGFloat = 0
         color.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
-        self.init(r: Int(red * 255), g: Int(green * 255), b: Int(blue * 255), a: Float(alpha))
+        self.init(r: Double(red), g: Double(green), b: Double(blue), a: Double(alpha))
     }
 
-    init(r: Int, g: Int, b: Int, a: Float) {
+    init(r: Double, g: Double, b: Double, a: Double) {
+        self.values = RGBA(r, g, b, a)
+    }
+
+    init(r: Int, g: Int, b: Int, a: Double) {
         self.values = RGBA(r, g, b, a)
     }
 
@@ -57,7 +61,7 @@ public struct WaddaColor: Equatable {
     // Returns the luma value (0.0-1.0)
     var luminance: CGFloat {
         // http://en.wikipedia.org/wiki/Luma_(video) Y = 0.2126 R + 0.7152 G + 0.0722 B
-        return 0.2126 * CGFloat(values.r) / 255.0 + 0.7152 * CGFloat(values.g) / 255.0 + 0.0722 * CGFloat(values.b) / 255.0
+        return 0.2126 * CGFloat(values.r) + 0.7152 * CGFloat(values.g) + 0.0722 * CGFloat(values.b)
     }
 
     func contrastingColor() -> WaddaColor {

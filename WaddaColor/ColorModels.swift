@@ -10,22 +10,39 @@ import Foundation
 
 public typealias ColorDistance = Double
 
-public struct RGBA: Equatable, CustomStringConvertible {
-    public let r: Int // 0-255
-    public let g: Int
-    public let b: Int
-    public let a: Float // 0.0-1.0
+private func clampedPrecondition(val: Double) {
+    precondition(val >= 0.0 && val <= 1.0, "value (\(val) must be betweem 0.0 and 1.0)")
+}
 
-    public init(_ r: Int, _ g: Int, _ b: Int, _ a: Float) {
-        // TODO: precondition clamps
+public struct RGBA: Equatable, CustomStringConvertible {
+    public let r: Double // 0.0-1.0
+    public let g: Double
+    public let b: Double
+    public let a: Double // 0.0-1.0
+
+    public init(_ r: Double, _ g: Double, _ b: Double, _ a: Double) {
+        clampedPrecondition(r)
+        clampedPrecondition(g)
+        clampedPrecondition(b)
+        clampedPrecondition(a)
+
         self.r = r
         self.g = g
         self.b = b
         self.a = a
     }
 
+    public init(_ r: Int, _ g: Int, _ b: Int, _ a: Double) {
+        clampedPrecondition(a)
+
+        self.r = Double(r) / 255.0
+        self.g = Double(g) / 255.0
+        self.b = Double(b) / 255.0
+        self.a = a
+    }
+
     public var color: UIColor {
-        return UIColor(red: CGFloat(r)/255.0, green: CGFloat(g)/255.0, blue: CGFloat(b)/255.0, alpha: CGFloat(a))
+        return UIColor(red: CGFloat(r), green: CGFloat(g), blue: CGFloat(b), alpha: CGFloat(a))
     }
 
     // Returns a value between 0.0 and 100.0, where 100.0 is a perfect match
@@ -47,17 +64,13 @@ public func ==(lhs: RGBA, rhs: RGBA) -> Bool {
 }
 
 public struct HSL: CustomStringConvertible {
-    public let hue: Double
-    public let saturation: Double
+    public let hue: Double //0-360
+    public let saturation: Double // 0-100
     public let lightness: Double // 0-100
 
     public init(rgb: RGBA) {
-        let red = Double(rgb.r) / 255.0
-        let green = Double(rgb.g) / 255.0
-        let blue = Double(rgb.b) / 255.0
-
-        let maximum = max(red, max(green, blue))
-        let minimum = min(red, min(green, blue))
+        let maximum = max(rgb.r, max(rgb.g, rgb.b))
+        let minimum = min(rgb.r, min(rgb.g, rgb.b))
         var h = 0.0
         var s = 0.0
         let l = (maximum + minimum) / 2.0;
@@ -69,12 +82,12 @@ public struct HSL: CustomStringConvertible {
             } else {
                 s = delta / (maximum + minimum)
             }
-            if maximum == red {
-                h = (green - blue) / delta + (green < blue ? 6.0 : 0)
-            } else if maximum == green {
-                h = (blue - red) / delta + 2.0
-            } else if maximum == blue {
-                h = (red - green) / delta + 4.0
+            if maximum == rgb.r {
+                h = (rgb.g - rgb.b) / delta + (rgb.g < rgb.b ? 6.0 : 0)
+            } else if maximum == rgb.g {
+                h = (rgb.b - rgb.r) / delta + 2.0
+            } else if maximum == rgb.b {
+                h = (rgb.r - rgb.g) / delta + 4.0
             }
             h /= 6.0;
             h *= 3.6;
@@ -103,9 +116,9 @@ public struct XYZ: CustomStringConvertible {
     public let z: Double
 
     public init(rgb: RGBA) {
-        var red = Double(rgb.r) / 255.0
-        var green = Double(rgb.g) / 255.0
-        var blue = Double(rgb.b) / 255.0
+        var red = rgb.r
+        var green = rgb.g
+        var blue = rgb.b
 
         if red > 0.04045 {
             red = (red + 0.055) / 1.055
@@ -131,6 +144,7 @@ public struct XYZ: CustomStringConvertible {
         red *= 100.0
         green *= 100.0
         blue *= 100.0
+
         self.x = red * 0.4124 + green * 0.3576 + blue * 0.1805
         self.y = red * 0.2126 + green * 0.7152 + blue * 0.0722
         self.z = red * 0.0193 + green * 0.1192 + blue * 0.9505

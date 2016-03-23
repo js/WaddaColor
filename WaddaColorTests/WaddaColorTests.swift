@@ -12,8 +12,8 @@ import XCTest
 class WaddaColorTests: XCTestCase {
 
     func testRGBEquality() {
-        let a = RGBA(12, 13, 14, 0.5)
-        let b = RGBA(12, 13, 14, 0.5)
+        let a = RGBA(12/255, 13/255, 14/255, 0.5)
+        let b = RGBA(12/255, 13/255, 14/255, 0.5)
         XCTAssertTrue(a == b)
     }
 
@@ -25,35 +25,30 @@ class WaddaColorTests: XCTestCase {
     func testBlackish() {
         let wadda = WaddaColor(color: UIColor(white: 0.01, alpha: 1.0))
         let blackish = wadda.closestMatch()
-        XCTAssertEqual(blackish.name, "Ink")
-        XCTAssertEqualWithAccuracy(blackish.distance, 0.548, accuracy: 0.001)
-    }
-
-    private func roundToPlaces(val: Double, places: Int = 3) -> Double {
-        let pow10np = pow(Double(10), Double(places))
-        return  round(val * pow10np) / pow10np
+        XCTAssertEqual(blackish.name, "Jade")
+        XCTAssertEqualWithAccuracy(blackish.distance, 0.669, accuracy: 0.001)
     }
 
     func testWhiteish() {
         let wadda = WaddaColor(color: UIColor(white: 0.99, alpha: 1.0))
         let whitish  = wadda.closestMatch()
         XCTAssertEqual(whitish.name, "Daisy")
-        XCTAssertEqualWithAccuracy(whitish.distance, 1.036, accuracy: 0.001)
+        XCTAssertEqualWithAccuracy(whitish.distance, 0.880, accuracy: 0.001)
     }
 
     func testRGBtoXYZ() {
         let xyz = XYZ(rgb: RGBA(128, 128, 128, 1.0))
-        XCTAssertEqual(roundToPlaces(xyz.x), 20.518)
-        XCTAssertEqual(roundToPlaces(xyz.y), 21.586)
-        XCTAssertEqual(roundToPlaces(xyz.z), 23.507)
+        XCTAssertEqualWithAccuracy(xyz.x, 20.518, accuracy: 0.001)
+        XCTAssertEqualWithAccuracy(xyz.y, 21.586, accuracy: 0.001)
+        XCTAssertEqualWithAccuracy(xyz.z, 23.507, accuracy: 0.001)
     }
 
     func testXYZtoLAB() {
         let xyz = XYZ(rgb: RGBA(128, 128, 128, 1.0))
         let lab = LAB(xyz: xyz)
-        XCTAssertEqual(roundToPlaces(lab.l), 53.585)
-        XCTAssertEqual(roundToPlaces(lab.a), 0.003)
-        XCTAssertEqual(roundToPlaces(lab.b), -0.006)
+        XCTAssertEqualWithAccuracy(lab.l, 53.585, accuracy: 0.001)
+        XCTAssertEqualWithAccuracy(lab.a, 0.003, accuracy: 0.001)
+        XCTAssertEqualWithAccuracy(lab.b, -0.006, accuracy: 0.001)
     }
 
     func testRGBtoHSL() {
@@ -80,9 +75,9 @@ class WaddaColorTests: XCTestCase {
         let gray = RGBA(127, 127, 127, 1.0)
         let white = RGBA(255, 255, 255, 1.0)
 
-        XCTAssertEqual(roundToPlaces(black.distanceTo(white)), 100.000)
-        XCTAssertEqual(roundToPlaces(black.distanceTo(gray)), 53.193)
-        XCTAssertEqual(roundToPlaces(black.distanceTo(almostBlack)), 0.274)
+        XCTAssertEqualWithAccuracy(black.distanceTo(white), 100.000, accuracy: 0.001)
+        XCTAssertEqualWithAccuracy(black.distanceTo(gray), 53.193, accuracy: 0.001)
+        XCTAssertEqualWithAccuracy(black.distanceTo(almostBlack), 0.274, accuracy: 0.001)
         XCTAssertEqual(black.distanceTo(black), 0.0)
     }
 
@@ -110,7 +105,7 @@ class WaddaColorTests: XCTestCase {
 
     func testComplementaryColor() {
         let red = WaddaColor(color: UIColor.redColor())
-        let complementary = WaddaColor(r: 0, g: 255, b: 255, a: 1.0)
+        let complementary = WaddaColor(r: 0.0, g: 1.0, b: 1.0, a: 1.0)
 
         XCTAssertEqual(red.complementaryColor().values, complementary.values)
     }
