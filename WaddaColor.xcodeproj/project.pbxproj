@@ -12,7 +12,7 @@
 		04E381C61C7CF76B0050A0DB /* WaddaColorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E381C51C7CF76B0050A0DB /* WaddaColorTests.swift */; };
 		04E381D11C7CF7910050A0DB /* WaddaColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E381D01C7CF7910050A0DB /* WaddaColor.swift */; };
 		04E381D31C7CF7F10050A0DB /* ColorNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E381D21C7CF7F10050A0DB /* ColorNames.swift */; };
-		04E381D51C7D135F0050A0DB /* Colorspaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E381D41C7D135F0050A0DB /* Colorspaces.swift */; };
+		04E381D51C7D135F0050A0DB /* ColorModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E381D41C7D135F0050A0DB /* ColorModels.swift */; };
 		04E381DF1C7E4B560050A0DB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E381DE1C7E4B560050A0DB /* AppDelegate.swift */; };
 		04E381E11C7E4B560050A0DB /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E381E01C7E4B560050A0DB /* FirstViewController.swift */; };
 		04E381E31C7E4B560050A0DB /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E381E21C7E4B560050A0DB /* SecondViewController.swift */; };
@@ -40,7 +40,7 @@
 		04E381C71C7CF76B0050A0DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		04E381D01C7CF7910050A0DB /* WaddaColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaddaColor.swift; sourceTree = "<group>"; };
 		04E381D21C7CF7F10050A0DB /* ColorNames.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorNames.swift; sourceTree = "<group>"; };
-		04E381D41C7D135F0050A0DB /* Colorspaces.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colorspaces.swift; sourceTree = "<group>"; };
+		04E381D41C7D135F0050A0DB /* ColorModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorModels.swift; sourceTree = "<group>"; };
 		04E381DC1C7E4B560050A0DB /* WhatTheColor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhatTheColor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04E381DE1C7E4B560050A0DB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04E381E01C7E4B560050A0DB /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -105,7 +105,7 @@
 				04E381B91C7CF76B0050A0DB /* WaddaColor.h */,
 				04E381BB1C7CF76B0050A0DB /* Info.plist */,
 				04E381D01C7CF7910050A0DB /* WaddaColor.swift */,
-				04E381D41C7D135F0050A0DB /* Colorspaces.swift */,
+				04E381D41C7D135F0050A0DB /* ColorModels.swift */,
 				04E381D21C7CF7F10050A0DB /* ColorNames.swift */,
 			);
 			path = WaddaColor;
@@ -276,7 +276,7 @@
 			files = (
 				04E381D31C7CF7F10050A0DB /* ColorNames.swift in Sources */,
 				04E381D11C7CF7910050A0DB /* WaddaColor.swift in Sources */,
-				04E381D51C7D135F0050A0DB /* Colorspaces.swift in Sources */,
+				04E381D51C7D135F0050A0DB /* ColorModels.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -531,6 +531,7 @@
 				04E381EE1C7E4B560050A0DB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
